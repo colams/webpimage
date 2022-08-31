@@ -28,6 +28,7 @@
 <script>
 import axios from "axios";
 import WeightManager from "@/components/weight/WeightManager.vue";
+import urlconfig from "../utils/url_config";
 
 export default {
     name: "WeightTable",
@@ -71,7 +72,7 @@ export default {
         },
         handleDelete(index, row) {
             axios
-                .post("https://colams.herokuapp.com/api/weight/delete", row)
+                .post(urlconfig.url("/api/weight/delete"), row)
                 .then((res) => {
                     if (res.status == 200 && res.data == true) {
                         alert("删除成功!!!!!!");
@@ -86,7 +87,7 @@ export default {
 
         async getWeightDataList() {
             await axios
-                .get("https://colams.herokuapp.com/api/weight/list")
+                .get(urlconfig.url("/api/weight/list"))
                 // .get("http://localhost:8080/api/weight/list")
                 .then((res) => {
                     console.log(JSON.stringify(res));

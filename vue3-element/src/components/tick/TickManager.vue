@@ -47,7 +47,7 @@ export default {
             console.log(this.data);
             axios
                 .post(
-                    "https://colams.herokuapp.com/api/tick/addOrUpdate",
+                    urlconfig.url("/api/tick/addOrUpdate"),
                     // JSON.stringify(this.data)
                     this.data
                 )

@@ -22,6 +22,7 @@
 
 <script>
 import axios from "axios";
+import urlconfig from "@/utils/url_config";
 
 export default {
     name: "WeightManager",
@@ -52,7 +53,7 @@ export default {
             console.log(this.data);
             axios
                 .post(
-                    "https://colams.herokuapp.com/api/weight/addOrUpdate",
+                    urlconfig.url("/api/weight/addOrUpdate"),
                     // "http://localhost:8080/api/weight/addOrUpdate",
                     // JSON.stringify(this.data)
                     this.data

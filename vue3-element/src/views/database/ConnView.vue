@@ -6,6 +6,7 @@
 
 <script>
 import axios from "axios";
+import urlconfig from "../../utils/url_config";
 
 export default {
     name: "Conn",
@@ -23,7 +24,7 @@ export default {
     methods: {
         async getConnString() {
             await axios
-                .post("https://colams.herokuapp.com/api/database/conn")
+                .post(urlconfig.url("/api/database/conn"))
                 .then((res) => {
                     this.conn = res.data;
                 })

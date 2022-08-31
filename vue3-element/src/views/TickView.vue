@@ -17,6 +17,7 @@
 <script>
 import axios from "axios";
 import WeightManager from "@/components/tick/TickManager.vue";
+import urlconfig from "../utils/url_config";
 
 export default {
     name: "TickTable",
@@ -46,7 +47,7 @@ export default {
         },
         handleDelete(index, row) {
             axios
-                .post("https://colams.herokuapp.com/api/tick/delete", row)
+                .post(urlconfig.url("/api/tick/delete"), row)
                 .then((res) => {
                     if (res.status == 200 && res.data == true) {
                         alert("删除成功!!!!!!");
@@ -60,7 +61,7 @@ export default {
         },
         async getTickDataList() {
             await axios
-                .get("https://colams.herokuapp.com/api/tick/list")
+                .get(urlconfig.url("/api/tick/list"))
                 // .get("http://localhost:8080/api/tick/list")
                 .then((res) => {
                     this.tableData = res.data;
