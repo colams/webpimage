@@ -3,7 +3,32 @@
     <el-table :data="tableData" border stripe>
       <el-table-column prop="id" label="ID" fit></el-table-column>
       <el-table-column prop="uid" label="UID" fit></el-table-column>
+      <el-table-column prop="infoid" label="InfoId" fit></el-table-column>
+      <el-table-column prop="action" label="Action" fit></el-table-column>
+      <el-table-column
+        prop="requestdata"
+        label="responsedata"
+        fit
+      ></el-table-column>
+      <el-table-column
+        prop="responsedata"
+        label="responsedata"
+        fit
+      ></el-table-column>
+      <el-table-column label="createDate" fit>
+        <template #default="scope">
+          {{ formatDate(scope.row.createDate) }}
+        </template>
+      </el-table-column>
       <el-table-column fixed="right">
+        <template #header>
+          <el-input
+            v-model="search"
+            size="small"
+            placeholder="Type to search"
+            @change="handleChange"
+          />
+        </template>
         <template #default="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
             >Edit</el-button
@@ -38,7 +63,9 @@ export default {
   },
   data() {
     return {
+      search: "",
       tableData: [],
+      tableDatabak: [],
       visible: false,
       data: null,
       callback: null,
@@ -46,9 +73,15 @@ export default {
   },
 
   methods: {
+    handleChange() {
+      this.tableData = this.tableDatabak.filter(
+        (e) => e.id == this.search || this.search.trim() == ""
+      );
+    },
+
     handleEdit(index, row) {
       this.visible = true;
-      this.data = { id: row.id, uid: row.uid };
+      this.data = { id: row.id, uid: row.uid, infoid: row.infoid };
       this.callback = (result) => {
         if (result) {
           this.getDataList();
@@ -76,10 +109,25 @@ export default {
         .get(urlconfig.url(urlconfig.haipi.list))
         .then((res) => {
           this.tableData = res.data;
+          this.tableDatabak = this.tableData;
         })
         .catch((e) => {
           console.log(JSON.stringify(e));
         });
+    },
+
+    formatDate(timestamp) {
+      var date = new Date(timestamp); 
+      var Y = date.getUTCFullYear() + "-";
+      var M =
+        (date.getUTCMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1) + "-";
+      var D = date.getUTCDate() + " ";
+      var h = date.getUTCHours() + ":";
+      var m = date.getUTCMinutes() + ":";
+      var s = date.getUTCSeconds();
+      return Y + M + D + h + m + s;
     },
   },
 
