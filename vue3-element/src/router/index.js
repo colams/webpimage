@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Tick from '../views/TickView.vue'
 import Weight from '../views/WeightView.vue'
 import Conn from '../views/database/ConnView.vue'
+import Haipi from '../views/Haipi.vue'
 import Welcome from '../views/WelcomeView.vue'
 import WeightDetail from '@/components/weight/WeightDetail.vue'
 import DatabaseView from '../views/database/DatabaseView.vue'
@@ -58,7 +59,12 @@ const routes = [
                 path: "/conn",
                 name: "Conn",
                 component: Conn,
-            },            
+            },
+            {
+                path: "/haipi",
+                name: "Haipi",
+                component: Haipi,
+            },
             {
                 path: "/database",
                 name: "DatabaseView",

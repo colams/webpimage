@@ -1,8 +1,19 @@
+const haipi = {
+    list: "api/haipi/list",
+    delete: "api/haipi/delete",
+}
+
+const database = {
+    conn: "api/database/conn",
+}
+
 const urlconfig = {
 
+    haipi: haipi,
+    database: database,
 
     host() {
-        return "https://colams.herokuapp.com/"
+        return "https://colaml.herokuapp.com/"
     },
 
     url(path) {
@@ -12,7 +23,6 @@ const urlconfig = {
         }
         return this.host() + tempPath
     }
-
 }
 
 export default urlconfig;

@@ -19,6 +19,11 @@ export default {
                 icon: "",
                 path: "/conn",
                 menuList: []
+            }, {
+                title: "Haipi111",
+                icon: "",
+                path: "/haipi",
+                menuList: []
             }]
         },{
             title: "数据库",

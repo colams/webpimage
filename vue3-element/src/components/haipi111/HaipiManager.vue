@@ -1,11 +1,11 @@
 <template>
-    <el-dialog title="收货地址" v-model="visible" :before-close="closeDialog" lock-scroll>
+    <el-dialog title="Haipi111" v-model="visible" :before-close="closeDialog" lock-scroll>
         <el-form :model="data">
             <el-form-item label="ID">
                 <el-input v-model="data.id" disabled></el-input>
             </el-form-item>
-            <el-form-item label="tick">
-                <el-input v-model="data.tick"></el-input>
+            <el-form-item label="responseData">
+                <el-input v-model="data.responseData"></el-input>
             </el-form-item>
         </el-form>
 
@@ -20,7 +20,7 @@
 import axios from "axios";
 
 export default {
-    name: "TickManager",
+    name: "HaipiManager",
     props: {
         visible: {
             type: Boolean,

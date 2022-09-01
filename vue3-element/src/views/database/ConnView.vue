@@ -24,7 +24,7 @@ export default {
     methods: {
         async getConnString() {
             await axios
-                .post(urlconfig.url("/api/database/conn"))
+                .post(urlconfig.url(urlconfig.database.conn))
                 .then((res) => {
                     this.conn = res.data;
                 })
